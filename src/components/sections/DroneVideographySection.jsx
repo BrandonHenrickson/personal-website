@@ -58,7 +58,7 @@ const DroneVideographySection = () => {
           {[
             {
               id: 'urban',
-              src: 'https://images.unsplash.com/photo-1673862968164-d8842a59bd2d',
+              src: 'https://images.unsplash.com/photo-1673862968164-d8842a59bd2d?auto=format&fit=crop&w=1200&q=70',
               title: 'Urban Dusk',
               place: 'Minnesota Skyline',
             },

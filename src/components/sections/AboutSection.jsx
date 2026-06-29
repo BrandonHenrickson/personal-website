@@ -6,7 +6,7 @@ const metrics = [
   { value: '10', label: 'Key systems secured' },
   { value: '20+', label: 'Team members led' },
   { value: '15+', label: 'Cross-time-zone meetings / mo' },
-  { value: '20+', label: 'Apple certifications' },
+  { value: '295', label: 'Nodes in my live D3 app' },
 ];
 
 const values = [

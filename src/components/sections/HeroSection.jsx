@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Mail } from 'lucide-react';
+import FootprintsBackground from '@/components/FootprintsBackground';
 
 const reveal = {
   hidden: { opacity: 0, y: 24 },
@@ -37,8 +38,9 @@ const HeroSection = () => {
   return (
     <section id="home" className="relative flex flex-col bg-canvas">
       {/* Emerald hero band */}
-      <div className="w-full bg-emerald pt-32 pb-24 px-6">
-        <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
+      <div className="relative overflow-hidden w-full bg-emerald pt-32 pb-24 px-6">
+        <FootprintsBackground />
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center">
           <motion.div
             variants={reveal}
             initial="hidden"
@@ -85,16 +87,6 @@ const HeroSection = () => {
             Computer Science graduate and Certified Apple Technician building
             dependable software, leading cross-functional teams, and shipping
             data-driven solutions with a methodical, business-minded approach.
-          </motion.p>
-
-          <motion.p
-            variants={reveal}
-            initial="hidden"
-            animate="show"
-            custom={3}
-            className="mt-6 font-mono text-xs sm:text-sm tracking-[0.2em] uppercase text-white/60"
-          >
-            Duluth, MN — Available
           </motion.p>
 
           <motion.div
