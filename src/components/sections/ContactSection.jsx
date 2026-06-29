@@ -32,6 +32,11 @@ const contactLines = [
   },
 ];
 
+const encode = (data) =>
+  Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
+
 const ContactSection = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -39,7 +44,7 @@ const ContactSection = () => {
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       toast({
@@ -49,11 +54,24 @@ const ContactSection = () => {
       });
       return;
     }
-    toast({
-      title: 'Message received',
-      description: "Thank you for reaching out — I'll respond shortly.",
-    });
-    setFormData({ name: '', email: '', message: '' });
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'contact', ...formData }),
+      });
+      toast({
+        title: 'Message sent',
+        description: "Thanks for reaching out — I'll respond shortly.",
+      });
+      setFormData({ name: '', email: '', message: '' });
+    } catch (err) {
+      toast({
+        variant: 'destructive',
+        title: 'Something went wrong',
+        description: 'Please email me directly at b.henrickson17@gmail.com.',
+      });
+    }
   };
 
   const inputClass =
@@ -137,7 +155,21 @@ const ContactSection = () => {
             Drop a quick message and I&apos;ll reply to the email you provide.
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
+            className="space-y-5"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden">
+              <label>
+                Don’t fill this out if you’re human:{' '}
+                <input name="bot-field" onChange={handleChange} />
+              </label>
+            </p>
             <div className="grid sm:grid-cols-2 gap-5">
               <label className="block">
                 <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-inkMuted block mb-2">
