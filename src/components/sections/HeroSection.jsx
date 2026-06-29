@@ -39,11 +39,27 @@ const HeroSection = () => {
       {/* Emerald hero band */}
       <div className="w-full bg-emerald pt-32 pb-24 px-6">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
-          <motion.p
+          <motion.div
             variants={reveal}
             initial="hidden"
             animate="show"
             custom={0}
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 mb-6"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75 animate-ping" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+            </span>
+            <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] uppercase text-white">
+              Open to Opportunities · Duluth / Remote
+            </span>
+          </motion.div>
+
+          <motion.p
+            variants={reveal}
+            initial="hidden"
+            animate="show"
+            custom={1}
             className="font-mono text-xs sm:text-sm tracking-[0.3em] uppercase text-white/70 mb-6"
           >
             Software Dev · Data Analysis · Project Mgmt

@@ -9,13 +9,24 @@ const projects = [
     tag: 'Portfolio · Web Design',
     year: '2026',
     body:
-      'Built a professional portfolio site (this one) on React, Vite, and Tailwind to document custom software, automation tools, and a drone videography reel. Hosted on Hostinger. Editorial type system and resume-aligned content.',
-    stack: ['React', 'Vite', 'Tailwind', 'Framer Motion'],
+      'Built a professional portfolio site (this one) on React, Vite, and Tailwind to document custom software, automation tools, and a drone videography reel. Auto-deployed on Netlify from GitHub on every push, with an emerald design system and résumé-aligned content.',
+    stack: ['React', 'Vite', 'Tailwind', 'Netlify CI/CD'],
     href: 'https://www.greatbrandino.com',
     external: true,
   },
   {
     n: '02',
+    title: 'Tech Troubleshooter Framework',
+    tag: 'D3.js · Data Viz · GitHub Pages',
+    year: '2026',
+    body:
+      'Designed and deployed an interactive D3.js troubleshooting tree — a searchable, 295-node map of Windows and Mac fixes, commands, and step-by-step solutions with zoom/pan and a live detail panel. Built in vanilla JavaScript with no framework and served on GitHub Pages.',
+    stack: ['D3.js', 'JavaScript', 'Data Visualization', 'GitHub Pages'],
+    href: 'https://brandonhenrickson.github.io/tech-troubleshooter-framework/',
+    external: true,
+  },
+  {
+    n: '03',
     title: 'Receipt-to-Ledger Automation',
     tag: 'Python · VBScript · COM',
     year: '2024 — 2025',
@@ -26,7 +37,7 @@ const projects = [
     external: false,
   },
   {
-    n: '03',
+    n: '04',
     title: 'Cybersecurity Dashboards & Vuln Program',
     tag: 'Power BI · Project Coordination',
     year: '2021 — 2022',
@@ -37,7 +48,7 @@ const projects = [
     external: false,
   },
   {
-    n: '04',
+    n: '05',
     title: 'Aerial Cinematography — Duluth & Beyond',
     tag: 'Drone · DJI · Color Grade',
     year: 'Ongoing',

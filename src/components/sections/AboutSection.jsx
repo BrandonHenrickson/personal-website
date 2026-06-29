@@ -2,6 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { User } from 'lucide-react';
 
+const metrics = [
+  { value: '10', label: 'Key systems secured' },
+  { value: '20+', label: 'Team members led' },
+  { value: '15+', label: 'Cross-time-zone meetings / mo' },
+  { value: '20+', label: 'Apple certifications' },
+];
+
 const values = [
   {
     k: 'I',
@@ -38,6 +45,27 @@ const AboutSection = () => {
 
       {/* Content */}
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
+        {/* Impact metrics */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
+          {metrics.map((m, i) => (
+            <motion.div
+              key={m.label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="text-center"
+            >
+              <p className="font-display font-bold text-3xl md:text-4xl text-emerald">
+                {m.value}
+              </p>
+              <p className="font-mono text-[11px] uppercase tracking-wide text-inkMuted mt-1 leading-snug">
+                {m.label}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
         <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* Photo */}
           <motion.figure

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Github, Linkedin } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const navLinks = [
@@ -121,6 +121,24 @@ const Navigation = () => {
                 </a>
               );
             })}
+            <a
+              href="https://github.com/BrandonHenrickson"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="text-inkMuted hover:text-emerald transition-colors"
+            >
+              <Github size={18} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/brandon-henrickson-470052167/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="text-inkMuted hover:text-emerald transition-colors"
+            >
+              <Linkedin size={18} />
+            </a>
             <a
               href="/Brandon-Henrickson-Resume.pdf"
               download
