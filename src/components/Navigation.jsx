@@ -67,7 +67,11 @@ const Navigation = () => {
   };
 
   return (
-    <motion.nav
+    <>
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+      <motion.nav
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -195,6 +199,7 @@ const Navigation = () => {
         )}
       </AnimatePresence>
     </motion.nav>
+    </>
   );
 };
 

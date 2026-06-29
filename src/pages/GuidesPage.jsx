@@ -256,6 +256,7 @@ const GuidesPage = () => {
       <div className="min-h-screen bg-canvas">
         <Navigation />
 
+        <main id="main" tabIndex={-1}>
         {/* Banner */}
         <div className="w-full bg-emerald pt-16">
           <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-3">
@@ -361,6 +362,7 @@ const GuidesPage = () => {
             </div>
           </div>
         )}
+        </main>
       </div>
     </>
   );

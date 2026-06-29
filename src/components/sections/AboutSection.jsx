@@ -78,6 +78,8 @@ const AboutSection = () => {
               <img
                 src="https://horizons-cdn.hostinger.com/0d63ad3f-8456-4ea9-bf68-6ad4e4438075/51ed36a95009e805b0797b013602d1bd.jpg"
                 alt="Brandon Henrickson"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>

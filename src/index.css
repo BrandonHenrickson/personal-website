@@ -50,9 +50,19 @@
     background-color: #065F46;
     color: #FFFFFF;
   }
+
+  :focus-visible {
+    outline: 2px solid #065F46;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
 }
 
 @layer components {
+  .skip-link {
+    @apply absolute left-2 top-2 z-[100] -translate-y-[150%] rounded bg-emerald px-4 py-2 font-mono text-xs text-white transition-transform duration-200 focus:translate-y-0;
+  }
+
   .container-edge {
     @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
   }

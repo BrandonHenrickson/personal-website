@@ -39,15 +39,17 @@ const HomePage = () => {
       
       <div className="scroll-smooth bg-canvas min-h-screen">
         <Navigation />
-        <HeroSection />
-        <AboutSection />
-        <WorkHistorySection />
-        <EducationSection />
-        <BlogSection />
-        <DroneVideographySection />
-        <SkillsSection />
-        <AccomplishmentsSection />
-        <ContactSection />
+        <main id="main" tabIndex={-1}>
+          <HeroSection />
+          <AboutSection />
+          <WorkHistorySection />
+          <EducationSection />
+          <BlogSection />
+          <DroneVideographySection />
+          <SkillsSection />
+          <AccomplishmentsSection />
+          <ContactSection />
+        </main>
       </div>
     </>
   );

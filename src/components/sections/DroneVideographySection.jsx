@@ -38,6 +38,7 @@ const DroneVideographySection = () => {
             <iframe
               src="https://www.youtube.com/embed/rCQk9rpxhMI?start=58"
               title="Brandon Henrickson — Drone Cinematography Reel"
+              loading="lazy"
               className="absolute top-0 left-0 w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -87,6 +88,8 @@ const DroneVideographySection = () => {
                   <img
                     src={frame.src}
                     alt={frame.title}
+                    loading="lazy"
+                    decoding="async"
                     onError={() => onImgError(frame.id)}
                     className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-[1.04]"
                   />
