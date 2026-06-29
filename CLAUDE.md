@@ -18,7 +18,7 @@ Recruiter-facing single-page portfolio. React + Vite + Tailwind, deployed on Net
 
 ## Stack
 - React 18 · Vite 4 · Tailwind 3 · Framer Motion
-- React Router 7 — routes: `/` (HomePage), `/guides` (GuidesPage), `*` → redirect to `/`
+- React Router 7 — routes: `/` (HomePage), `/guides` (GuidesPage), `*` → `NotFoundPage` (custom 404)
 - Radix UI / shadcn-style primitives in `src/components/ui/`
 - react-helmet for per-page title/meta; lucide-react for icons
 - Supabase JS installed but unused; ThemeContext exists but is inert (no light/dark toggle)
@@ -38,6 +38,7 @@ Recruiter-facing single-page portfolio. React + Vite + Tailwind, deployed on Net
 - `src/components/FootprintsBackground.jsx` — canvas: a top-down figure that wanders the hero band leaving fading footprints. `pointer-events-none`, honors `prefers-reduced-motion`. Mounted inside the hero's `relative overflow-hidden` emerald band; content sits at `z-10`.
 - **Contact form** → **Netlify Forms**: the React form POSTs to `/` with `form-name=contact` + a honeypot; `public/__forms.html` is the hidden static form Netlify detects at build. Submissions appear in Netlify → Forms; **email delivery requires a Form submission notification configured in the Netlify dashboard** (Project configuration → Notifications).
 - **SPA routing on Netlify:** `public/_redirects` (`/* /index.html 200`). The legacy `public/.htaccess` only applied to the old Apache host.
+- **Accessibility/perf:** `.skip-link` (in `Navigation`) + `<main id="main" tabIndex={-1}>` landmark on every page; global `:focus-visible` outline in `index.css`; below-the-fold media is `loading="lazy"`.
 
 ## Gotchas
 - `dist/ruvector.db` is a stray local artifact (not produced by the build, not in git, not deployed) — ignore/delete locally.
