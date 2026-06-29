@@ -17,7 +17,7 @@ module.exports = {
 		},
 		extend: {
 			colors: {
-				border: 'hsl(var(--border))',
+				border: '#E5E7EB',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
@@ -50,16 +50,21 @@ module.exports = {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
 				},
-				// Editorial corporate palette
-				paper: '#FAF8F3',
-				paperAlt: '#F3EFE5',
-				ink: '#0B1120',
-				inkSoft: '#1E2536',
-				inkMuted: '#5B6478',
-				rule: '#E5E1D6',
-				accentBlue: '#2563EB',
-				accentBlueDark: '#1D4ED8',
-				editorial: '#B8893C',
+				// Emerald redesign system (2026-06-27)
+				emerald: '#065F46',        // primary accent — banners, badges, borders
+				emeraldHover: '#047857',   // hover state
+				emeraldLight: '#D1FAE5',   // light emerald tint for subtle bg
+				emeraldText: '#064E3B',    // emerald text on light backgrounds
+				canvas: '#FFFFFF',         // page background
+				canvasAlt: '#F9FAFB',      // section alternating bg
+				surface: '#FFFFFF',        // card background
+				surfaceHover: '#F3F4F6',   // card hover background
+				borderHover: '#065F46',    // card border on hover
+				ink: '#111827',            // primary text
+				inkSoft: '#374151',        // secondary text / card body
+				inkMuted: '#6B7280',       // dates, captions, meta
+				codeBlock: '#1A1F2E',      // dark code/terminal block background
+				codeText: '#E2E8F0',       // text inside dark code blocks
 			},
 			fontFamily: {
 				display: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],

@@ -4,13 +4,13 @@ import { Menu, X } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'About', href: '#about', n: '02' },
-  { name: 'Experience', href: '#work', n: '03' },
-  { name: 'Education', href: '#education', n: '04' },
-  { name: 'Work', href: '#blog', n: '05' },
-  { name: 'Drone', href: '#drone', n: '06' },
-  { name: 'Skills', href: '#skills', n: '07' },
-  { name: 'Contact', href: '#contact', n: '09' },
+  { name: 'About', href: '#about' },
+  { name: 'Experience', href: '#work' },
+  { name: 'Education', href: '#education' },
+  { name: 'Work', href: '#blog' },
+  { name: 'Drone', href: '#drone' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Contact', href: '#contact' },
 ];
 
 const Navigation = () => {
@@ -70,28 +70,26 @@ const Navigation = () => {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-paper/90 backdrop-blur-md border-b border-rule'
-          : 'bg-transparent border-b border-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 bg-canvas/95 backdrop-blur-sm border-b border-border transition-shadow duration-300 ${
+        isScrolled ? 'shadow-sm' : ''
       }`}
     >
       <div className="container-edge">
         <div className="flex justify-between items-center h-16">
-          {/* Monogram */}
+          {/* Monogram + wordmark */}
           <a
             href="/"
             onClick={(e) => handleNavClick(e, '#home')}
             className="flex items-center gap-3 group"
           >
-            <span className="flex items-center justify-center w-9 h-9 border border-ink text-ink font-display text-base tracking-tight group-hover:bg-ink group-hover:text-paper transition-colors duration-300">
+            <span className="flex items-center justify-center w-9 h-9 border border-emerald text-emerald font-display font-bold text-base tracking-tight group-hover:bg-emerald group-hover:text-white transition-colors duration-300">
               BH
             </span>
             <span className="hidden sm:flex flex-col leading-tight">
-              <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-inkMuted">
+              <span className="font-display font-bold text-sm text-ink">
                 Brandon Henrickson
               </span>
-              <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-editorial">
+              <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-emerald">
                 Portfolio · 2026
               </span>
             </span>
@@ -106,30 +104,30 @@ const Navigation = () => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="group flex items-baseline gap-1.5"
+                  className="group relative"
                 >
                   <span
-                    className={`font-mono text-[10px] tracking-[0.2em] transition-colors ${
-                      active ? 'text-editorial' : 'text-inkMuted group-hover:text-editorial'
-                    }`}
-                  >
-                    {link.n}
-                  </span>
-                  <span
-                    className={`font-sans text-sm tracking-tight transition-colors relative ${
-                      active ? 'text-ink' : 'text-inkSoft group-hover:text-ink'
+                    className={`font-mono text-sm transition-colors ${
+                      active ? 'text-emerald' : 'text-inkMuted group-hover:text-emerald'
                     }`}
                   >
                     {link.name}
-                    <span
-                      className={`absolute left-0 -bottom-1 h-px bg-ink transition-all duration-500 ${
-                        active ? 'w-full' : 'w-0 group-hover:w-full'
-                      }`}
-                    />
                   </span>
+                  <span
+                    className={`absolute left-0 -bottom-1.5 h-px bg-emerald transition-all duration-300 ${
+                      active ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                  />
                 </a>
               );
             })}
+            <a
+              href="/Brandon-Henrickson-Resume.pdf"
+              download
+              className="border border-emerald text-emerald text-sm px-4 py-1.5 rounded font-mono transition-colors duration-300 hover:bg-emerald hover:text-white"
+            >
+              Resume
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -153,7 +151,7 @@ const Navigation = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
-            className="lg:hidden bg-paper border-t border-rule"
+            className="lg:hidden bg-canvas border-t border-border"
           >
             <div className="container-edge py-6 space-y-1">
               {navLinks.map((link) => (
@@ -161,14 +159,18 @@ const Navigation = () => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="flex items-baseline gap-3 py-3 border-b border-rule"
+                  className="block py-3 border-b border-border font-display text-2xl text-ink hover:text-emerald transition-colors"
                 >
-                  <span className="font-mono text-[10px] tracking-[0.25em] text-editorial w-8">
-                    {link.n}
-                  </span>
-                  <span className="font-display text-2xl text-ink">{link.name}</span>
+                  {link.name}
                 </a>
               ))}
+              <a
+                href="/Brandon-Henrickson-Resume.pdf"
+                download
+                className="block mt-4 text-center border border-emerald text-emerald px-4 py-3 rounded font-mono text-sm transition-colors duration-300 hover:bg-emerald hover:text-white"
+              >
+                Resume
+              </a>
             </div>
           </motion.div>
         )}

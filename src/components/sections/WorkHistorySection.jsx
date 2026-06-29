@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin } from 'lucide-react';
+import { Briefcase, MapPin } from 'lucide-react';
 
 const experiences = [
   {
@@ -67,71 +67,64 @@ const experiences = [
 
 const WorkHistorySection = () => {
   return (
-    <section id="work" className="section-pad bg-paperAlt/40">
-      <div className="container-edge">
-        {/* Header */}
-        <div className="grid grid-cols-12 gap-y-8 lg:gap-x-12 mb-20">
-          <div className="col-span-12 lg:col-span-5">
-            <p className="section-marker mb-4">03 / Experience</p>
-            <h2 className="display text-5xl lg:text-6xl text-ink">
-              A record of
-              <br />
-              <span className="italic text-editorial">delivered</span> work.
-            </h2>
-          </div>
-          <div className="col-span-12 lg:col-span-6 lg:col-start-7 flex items-end">
-            <p className="text-inkSoft text-lg leading-relaxed text-pretty">
-              Five roles across hardware repair, freelance consulting, project
-              coordination, and business analysis — chronicled in the same
-              language as the printed résumé.
-            </p>
-          </div>
+    <section id="work" className="bg-canvasAlt">
+      {/* Banner */}
+      <div className="w-full bg-emerald">
+        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-3">
+          <Briefcase size={20} className="text-white" strokeWidth={2} />
+          <h2 className="font-display font-bold text-xl tracking-wide text-white">
+            Work Experience
+          </h2>
         </div>
+      </div>
 
-        {/* Timeline */}
-        <div className="relative">
+      {/* Content */}
+      <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
+        <p className="text-inkSoft text-base md:text-lg leading-[1.75] text-pretty mb-10 max-w-2xl">
+          Five roles across hardware repair, freelance consulting, project
+          coordination, and business analysis — chronicled in the same
+          language as the printed résumé.
+        </p>
+
+        <div className="flex flex-col gap-4">
           {experiences.map((exp, i) => (
             <motion.article
               key={exp.position + exp.period}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.7, delay: i * 0.05 }}
-              className="grid grid-cols-12 gap-y-6 lg:gap-x-12 border-t border-ink/15 py-12 group"
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6, delay: i * 0.05 }}
+              className="bg-surface border border-border rounded-lg p-6 transition-all duration-300 hover:border-emerald hover:shadow-sm"
             >
-              <div className="col-span-12 lg:col-span-3">
-                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-editorial mb-2">
-                  {String(i + 1).padStart(2, '0')} / Period
-                </p>
-                <p className="font-mono text-sm text-ink">{exp.period}</p>
-                <p className="mt-3 flex items-center gap-1.5 text-xs text-inkMuted">
-                  <MapPin size={11} />
-                  <span className="font-mono tracking-wider uppercase">{exp.location}</span>
-                </p>
-              </div>
-
-              <div className="col-span-12 lg:col-span-4">
-                <h3 className="font-display text-3xl lg:text-4xl text-ink leading-[1.05] tracking-tight mb-2 group-hover:text-accentBlue transition-colors duration-500">
-                  {exp.position}
-                </h3>
-                <p className="font-sans text-sm tracking-wide text-inkSoft uppercase">
-                  {exp.company}
-                </p>
-              </div>
-
-              <ul className="col-span-12 lg:col-span-5 space-y-3 text-inkSoft leading-relaxed text-pretty">
-                {exp.bullets.map((b, idx) => (
-                  <li key={idx} className="flex gap-3">
-                    <span className="font-mono text-[10px] text-editorial pt-2 shrink-0">
-                      ·
+              <div className="flex items-start gap-4">
+                <span className="flex items-center justify-center shrink-0 w-8 h-8 rounded-full bg-emerald text-white font-mono font-bold text-sm">
+                  {i + 1}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-display font-bold text-xl text-ink leading-tight">
+                    {exp.position}
+                  </h3>
+                  <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-sm text-inkMuted">
+                    <span>{exp.company}</span>
+                    <span className="flex items-center gap-1">
+                      <MapPin size={12} />
+                      {exp.location}
                     </span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
+                    <span>{exp.period}</span>
+                  </div>
+
+                  <ul className="mt-4 space-y-2 pl-1">
+                    {exp.bullets.map((b, idx) => (
+                      <li key={idx} className="flex gap-3 text-inkSoft leading-[1.75] text-pretty">
+                        <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </motion.article>
           ))}
-          <div className="hairline" />
         </div>
       </div>
     </section>

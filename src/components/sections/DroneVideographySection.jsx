@@ -7,35 +7,34 @@ const DroneVideographySection = () => {
   const onImgError = (id) => setImageErrors((prev) => ({ ...prev, [id]: true }));
 
   return (
-    <section id="drone" className="section-pad">
-      <div className="container-edge">
-        <div className="grid grid-cols-12 gap-y-8 lg:gap-x-12 mb-16">
-          <div className="col-span-12 lg:col-span-6">
-            <p className="section-marker mb-4">06 / Drone Videography</p>
-            <h2 className="display text-5xl lg:text-6xl text-ink">
-              The same place,
-              <br />
-              <span className="italic text-editorial">from above.</span>
-            </h2>
-          </div>
-          <div className="col-span-12 lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-inkSoft text-lg leading-relaxed text-pretty">
-              Aerial cinematography across Minnesota landscapes and events —
-              shot on DJI Air 2S, DJI Air 3, and DJI Mini 3 Pro. A short demo
-              reel and selected frames below.
-            </p>
-          </div>
+    <section id="drone" className="bg-canvas">
+      {/* Banner */}
+      <div className="w-full bg-emerald">
+        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-3">
+          <Film size={20} className="text-white" strokeWidth={2} />
+          <h2 className="font-display font-bold text-xl tracking-wide text-white">
+            Drone Videography
+          </h2>
         </div>
+      </div>
+
+      {/* Content */}
+      <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
+        <p className="text-inkSoft text-base md:text-lg leading-[1.75] text-pretty mb-10 max-w-2xl">
+          Aerial cinematography across Minnesota landscapes and events —
+          shot on DJI Air 2S, DJI Air 3, and DJI Mini 3 Pro. A short demo
+          reel and selected frames below.
+        </p>
 
         {/* Featured video */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.8 }}
-          className="relative bg-ink overflow-hidden"
+          transition={{ duration: 0.7 }}
+          className="bg-surface border border-border border-t-2 border-t-emerald rounded-lg overflow-hidden shadow-sm"
         >
-          <div className="relative aspect-video w-full">
+          <div className="relative aspect-video w-full bg-codeBlock">
             <iframe
               src="https://www.youtube.com/embed/rCQk9rpxhMI?start=58"
               title="Brandon Henrickson — Drone Cinematography Reel"
@@ -44,19 +43,18 @@ const DroneVideographySection = () => {
               allowFullScreen
             />
           </div>
+          <div className="flex items-center justify-between gap-3 px-5 py-3 border-t border-border">
+            <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-inkMuted">
+              Reel 01 — Demo · 4K · 60FPS
+            </p>
+            <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-emerald">
+              Featured Project
+            </p>
+          </div>
         </motion.div>
 
-        <div className="grid grid-cols-12 gap-y-3 lg:gap-x-12 mt-4 mb-16">
-          <p className="col-span-12 lg:col-span-6 font-mono text-[10px] tracking-[0.3em] uppercase text-inkMuted">
-            Reel 01 — Demo · 4K · 60FPS
-          </p>
-          <p className="col-span-12 lg:col-span-6 lg:text-right font-mono text-[10px] tracking-[0.3em] uppercase text-editorial">
-            Featured Project
-          </p>
-        </div>
-
         {/* Frame grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-4 mt-8">
           {[
             {
               id: 'urban',
@@ -73,13 +71,13 @@ const DroneVideographySection = () => {
           ].map((frame, i) => (
             <motion.figure
               key={frame.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group relative"
+              className="group bg-surface border border-border rounded-lg overflow-hidden transition-colors duration-300 hover:border-emerald"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-paperAlt">
+              <div className="relative aspect-[4/3] overflow-hidden bg-canvasAlt">
                 {imageErrors[frame.id] ? (
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-inkMuted">
                     <AlertCircle size={26} strokeWidth={1.25} />
@@ -93,14 +91,13 @@ const DroneVideographySection = () => {
                     className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-[1.04]"
                   />
                 )}
-                <div className="absolute inset-0 ring-1 ring-inset ring-ink/10" />
               </div>
-              <figcaption className="flex items-baseline justify-between gap-4 mt-4 pb-4 border-b border-rule">
+              <figcaption className="flex items-baseline justify-between gap-4 px-5 py-4">
                 <div>
-                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-editorial mb-1">
+                  <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-emerald mb-1">
                     Frame 0{i + 2}
                   </p>
-                  <h3 className="font-display text-2xl text-ink leading-tight">
+                  <h3 className="font-display font-bold text-lg text-ink leading-tight">
                     {frame.title}
                   </h3>
                 </div>

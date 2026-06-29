@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { Folder, ArrowUpRight } from 'lucide-react';
 
 const projects = [
   {
@@ -51,79 +51,64 @@ const projects = [
 
 const BlogSection = () => {
   return (
-    <section id="blog" className="section-pad">
-      <div className="container-edge">
-        <div className="grid grid-cols-12 gap-y-8 lg:gap-x-12 mb-20">
-          <div className="col-span-12 lg:col-span-5">
-            <p className="section-marker mb-4">05 / Selected Work</p>
-            <h2 className="display text-5xl lg:text-6xl text-ink">
-              Things I have
-              <br />
-              <span className="italic text-editorial">built &amp; shipped.</span>
-            </h2>
-          </div>
-          <div className="col-span-12 lg:col-span-6 lg:col-start-7 flex items-end">
-            <p className="text-inkSoft text-lg leading-relaxed text-pretty">
-              Four projects that cover the range — a portfolio site, an
-              automation tool that replaced manual work, cybersecurity reporting
-              at scale, and an ongoing personal practice in aerial film.
-            </p>
-          </div>
+    <section id="blog" className="bg-canvasAlt">
+      {/* Banner */}
+      <div className="w-full bg-emerald">
+        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-3">
+          <Folder size={20} className="text-white" strokeWidth={2} />
+          <h2 className="font-display font-bold text-xl tracking-wide text-white">
+            Projects
+          </h2>
         </div>
+      </div>
 
-        <div className="border-t border-ink/15">
+      {/* Content */}
+      <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
+        <p className="text-inkSoft text-base md:text-lg leading-[1.75] text-pretty mb-10 max-w-2xl">
+          Four projects that cover the range — a portfolio site, an
+          automation tool that replaced manual work, cybersecurity reporting
+          at scale, and an ongoing personal practice in aerial film.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-4">
           {projects.map((p, i) => {
-            const Wrapper = p.external ? 'a' : 'a';
             const linkProps = p.external
               ? { href: p.href, target: '_blank', rel: 'noopener noreferrer' }
               : { href: p.href };
             return (
-              <motion.div
+              <motion.a
                 key={p.n}
+                {...linkProps}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
+                viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="border-b border-rule"
+                className="group flex flex-col bg-surface border border-border rounded-lg p-6 transition-all duration-300 hover:border-emerald hover:shadow-sm hover:-translate-y-0.5"
               >
-                <Wrapper
-                  {...linkProps}
-                  className="grid grid-cols-12 gap-y-4 lg:gap-x-12 items-start py-10 group cursor-pointer"
-                >
-                  <div className="col-span-12 lg:col-span-1">
-                    <span className="font-mono text-xs tracking-[0.3em] text-editorial">
-                      {p.n}
+                <h3 className="font-display font-bold text-lg text-ink leading-snug flex items-start justify-between gap-2">
+                  <span>{p.title}</span>
+                  <ArrowUpRight
+                    size={18}
+                    className="text-inkMuted shrink-0 mt-1 transition-colors duration-300 group-hover:text-emerald"
+                  />
+                </h3>
+                <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-inkMuted mt-1">
+                  {p.tag} · {p.year}
+                </p>
+                <p className="text-inkSoft leading-[1.7] text-pretty mt-3 flex-1">
+                  {p.body}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {p.stack.map((s) => (
+                    <span
+                      key={s}
+                      className="font-mono text-xs bg-emeraldLight text-emeraldText px-3 py-1 rounded-full"
+                    >
+                      {s}
                     </span>
-                  </div>
-                  <div className="col-span-12 lg:col-span-4">
-                    <h3 className="font-display text-3xl lg:text-4xl text-ink leading-[1.05] tracking-tight mb-2 group-hover:text-accentBlue transition-colors duration-500 flex items-start gap-2">
-                      <span>{p.title}</span>
-                      <ArrowUpRight
-                        size={20}
-                        className="text-inkMuted shrink-0 mt-1 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
-                      />
-                    </h3>
-                    <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-inkMuted">
-                      {p.tag} · {p.year}
-                    </p>
-                  </div>
-                  <div className="col-span-12 lg:col-span-7">
-                    <p className="text-inkSoft leading-relaxed mb-4 text-pretty">
-                      {p.body}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {p.stack.map((s) => (
-                        <span
-                          key={s}
-                          className="font-mono text-[10px] tracking-[0.15em] uppercase text-inkMuted border border-rule px-2 py-1"
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </Wrapper>
-              </motion.div>
+                  ))}
+                </div>
+              </motion.a>
             );
           })}
         </div>

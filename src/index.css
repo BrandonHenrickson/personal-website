@@ -42,17 +42,13 @@
   }
 
   body {
-    @apply bg-paper text-ink font-sans;
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(11, 17, 32, 0.05) 1px, transparent 0);
-    background-size: 32px 32px;
-    background-attachment: fixed;
+    @apply bg-canvas text-ink font-sans;
     font-feature-settings: 'ss01', 'cv11';
   }
 
   ::selection {
-    background-color: #0B1120;
-    color: #FAF8F3;
+    background-color: #065F46;
+    color: #FFFFFF;
   }
 }
 
@@ -65,20 +61,12 @@
     @apply py-24 lg:py-32;
   }
 
-  .eyebrow {
-    @apply font-mono text-xs tracking-[0.25em] uppercase text-editorial;
-  }
-
   .section-marker {
     @apply font-mono text-xs tracking-[0.2em] uppercase text-inkMuted;
   }
 
   .display {
     @apply font-display font-light leading-[0.95] tracking-[-0.02em];
-  }
-
-  .hairline {
-    @apply h-px w-full bg-rule;
   }
 
   .link-underline {
@@ -90,16 +78,6 @@
   }
   .link-underline:hover::after {
     @apply scale-x-100;
-  }
-
-  .btn-primary {
-    @apply inline-flex items-center gap-2 bg-ink text-paper px-6 py-3 font-mono text-xs tracking-[0.2em] uppercase
-           transition-all duration-300 hover:bg-accentBlue hover:translate-y-[-1px];
-  }
-
-  .btn-ghost {
-    @apply inline-flex items-center gap-2 border border-ink/30 text-ink px-6 py-3 font-mono text-xs tracking-[0.2em] uppercase
-           transition-all duration-300 hover:border-ink hover:bg-ink hover:text-paper;
   }
 }
 

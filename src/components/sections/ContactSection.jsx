@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, Github, Mail, Phone, MapPin, ArrowUpRight, Send, FileText } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
 const contactLines = [
@@ -57,38 +56,41 @@ const ContactSection = () => {
     setFormData({ name: '', email: '', message: '' });
   };
 
+  const inputClass =
+    'w-full bg-canvas border border-border rounded px-3 py-2.5 text-ink placeholder:text-inkMuted/60 outline-none transition-colors focus:border-emerald focus:ring-1 focus:ring-emerald font-sans';
+
   return (
-    <section id="contact" className="section-pad relative">
-      <div className="container-edge">
-        {/* Header */}
-        <div className="grid grid-cols-12 gap-y-8 lg:gap-x-12 mb-20">
-          <div className="col-span-12 lg:col-span-7">
-            <p className="section-marker mb-4">09 / Contact</p>
-            <h2 className="display text-6xl lg:text-7xl xl:text-8xl text-ink leading-[0.95]">
-              Let&apos;s
-              <br />
-              <span className="italic text-editorial">talk shop.</span>
-            </h2>
-          </div>
-          <div className="col-span-12 lg:col-span-5 flex flex-col justify-end">
-            <p className="text-inkSoft text-lg leading-relaxed text-pretty mb-6">
-              Open to full-time roles, contract work, automation projects, and
-              drone-videography collaborations. Based in Duluth, MN — happy to
-              work remote.
-            </p>
-            <a
-              href="/Brandon-Henrickson-Resume.pdf"
-              download
-              className="btn-primary w-fit"
-            >
-              <FileText size={14} />
-              Download Resume (PDF)
-            </a>
-          </div>
+    <section id="contact" className="bg-canvasAlt">
+      {/* Banner */}
+      <div className="w-full bg-emerald">
+        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-3">
+          <Mail size={20} className="text-white" strokeWidth={2} />
+          <h2 className="font-display font-bold text-xl tracking-wide text-white">
+            Contact
+          </h2>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <p className="text-inkSoft text-base md:text-lg leading-[1.75] text-pretty max-w-2xl">
+            Open to full-time roles, contract work, automation projects, and
+            drone-videography collaborations. Based in Duluth, MN — happy to
+            work remote.
+          </p>
+          <a
+            href="/Brandon-Henrickson-Resume.pdf"
+            download
+            className="inline-flex items-center gap-2 shrink-0 bg-emerald text-white px-6 py-3 rounded font-mono text-xs tracking-[0.2em] uppercase transition-colors duration-300 hover:bg-emeraldHover"
+          >
+            <FileText size={14} />
+            Download Resume (PDF)
+          </a>
         </div>
 
-        {/* Contact lines (the centerpiece) */}
-        <div className="border-t border-ink/15">
+        {/* Contact info cards */}
+        <div className="grid sm:grid-cols-2 gap-4">
           {contactLines.map((line, i) => (
             <motion.a
               key={line.label}
@@ -99,60 +101,46 @@ const ContactSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="grid grid-cols-12 gap-y-2 lg:gap-x-12 items-center border-b border-rule py-7 group cursor-pointer"
+              className="group flex items-center gap-4 bg-surface border border-border rounded-lg p-5 transition-colors duration-300 hover:border-emerald"
             >
-              <div className="col-span-2 lg:col-span-1 flex items-center">
-                <line.icon size={20} strokeWidth={1.25} className="text-editorial" />
-              </div>
-              <div className="col-span-10 lg:col-span-3">
-                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-inkMuted">
+              <span className="flex items-center justify-center w-10 h-10 rounded-full bg-emeraldLight text-emerald shrink-0">
+                <line.icon size={18} strokeWidth={2} />
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-inkMuted">
                   {line.label}
                 </p>
-              </div>
-              <div className="col-span-12 lg:col-span-7 lg:col-start-5 flex items-center justify-between gap-4">
-                <span className="font-display text-2xl lg:text-4xl text-ink leading-tight tracking-tight group-hover:text-accentBlue transition-colors duration-500 break-all">
+                <p className="font-sans text-ink break-all group-hover:text-emerald transition-colors">
                   {line.value}
-                </span>
-                <ArrowUpRight
-                  size={22}
-                  className="text-inkMuted shrink-0 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
-                />
+                </p>
               </div>
+              <ArrowUpRight
+                size={18}
+                className="text-inkMuted shrink-0 transition-colors duration-300 group-hover:text-emerald"
+              />
             </motion.a>
           ))}
         </div>
 
         {/* Form */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="grid grid-cols-12 gap-y-8 lg:gap-x-12 mt-24"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="bg-surface border border-border rounded-lg p-6 md:p-8 mt-8"
         >
-          <div className="col-span-12 lg:col-span-4">
-            <p className="section-marker mb-4">Or send a note</p>
-            <p className="font-display text-3xl text-ink leading-tight mb-4">
-              Prefer to write?
-            </p>
-            <p className="text-inkSoft leading-relaxed text-pretty">
-              Drop a quick message and I&apos;ll reply to the email you provide.
-            </p>
-            <div className="flex items-center gap-2 mt-6 text-inkMuted">
-              <MapPin size={14} />
-              <span className="font-mono text-xs tracking-[0.2em] uppercase">
-                Duluth, MN — Available
-              </span>
-            </div>
-          </div>
+          <p className="font-display font-bold text-2xl text-ink leading-tight">
+            Prefer to write?
+          </p>
+          <p className="text-inkSoft leading-[1.7] text-pretty mt-2 mb-6">
+            Drop a quick message and I&apos;ll reply to the email you provide.
+          </p>
 
-          <form
-            onSubmit={handleSubmit}
-            className="col-span-12 lg:col-span-7 lg:col-start-6 space-y-6"
-          >
-            <div className="grid sm:grid-cols-2 gap-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="grid sm:grid-cols-2 gap-5">
               <label className="block">
-                <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-inkMuted block mb-2">
+                <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-inkMuted block mb-2">
                   Your Name
                 </span>
                 <input
@@ -160,12 +148,12 @@ const ContactSection = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b border-ink/25 focus:border-ink py-2 text-ink placeholder:text-inkMuted/60 outline-none transition-colors font-sans"
+                  className={inputClass}
                   placeholder="Jane Doe"
                 />
               </label>
               <label className="block">
-                <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-inkMuted block mb-2">
+                <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-inkMuted block mb-2">
                   Your Email
                 </span>
                 <input
@@ -173,14 +161,14 @@ const ContactSection = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b border-ink/25 focus:border-ink py-2 text-ink placeholder:text-inkMuted/60 outline-none transition-colors font-sans"
+                  className={inputClass}
                   placeholder="jane@company.com"
                 />
               </label>
             </div>
 
             <label className="block">
-              <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-inkMuted block mb-2">
+              <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-inkMuted block mb-2">
                 Message
               </span>
               <textarea
@@ -188,24 +176,27 @@ const ContactSection = () => {
                 rows="5"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full bg-transparent border-b border-ink/25 focus:border-ink py-2 text-ink placeholder:text-inkMuted/60 outline-none transition-colors resize-none font-sans"
+                className={`${inputClass} resize-none`}
                 placeholder="Tell me about the role, project, or idea…"
               />
             </label>
 
-            <Button type="submit" className="btn-primary mt-4">
+            <button
+              type="submit"
+              className="inline-flex items-center gap-2 bg-emerald text-white px-8 py-3 rounded font-mono text-xs tracking-[0.2em] uppercase transition-colors duration-300 hover:bg-emeraldHover"
+            >
               <Send size={14} />
               Send Message
-            </Button>
+            </button>
           </form>
         </motion.div>
 
         {/* Footer */}
-        <div className="mt-24 pt-8 border-t border-rule flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="font-mono text-xs tracking-[0.2em] uppercase text-inkMuted">
             © {new Date().getFullYear()} Brandon Henrickson · Duluth, MN
           </p>
-          <p className="font-mono text-xs tracking-[0.2em] uppercase text-editorial">
+          <p className="font-mono text-xs tracking-[0.2em] uppercase text-emerald">
             Set in Fraunces &amp; IBM Plex
           </p>
         </div>

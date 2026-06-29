@@ -37,7 +37,7 @@ const HomePage = () => {
         />
       </Helmet>
       
-      <div className="scroll-smooth bg-paper min-h-screen">
+      <div className="scroll-smooth bg-canvas min-h-screen">
         <Navigation />
         <HeroSection />
         <AboutSection />
