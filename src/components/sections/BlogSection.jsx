@@ -76,9 +76,10 @@ const BlogSection = () => {
       {/* Content */}
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
         <p className="text-inkSoft text-base md:text-lg leading-[1.75] text-pretty mb-10 max-w-2xl">
-          Four projects that cover the range — a portfolio site, an
-          automation tool that replaced manual work, cybersecurity reporting
-          at scale, and an ongoing personal practice in aerial film.
+          Five projects that cover the range — a portfolio site, an
+          interactive D3 troubleshooting app, an automation tool that replaced
+          manual work, cybersecurity reporting at scale, and an ongoing personal
+          practice in aerial film.
         </p>
 
         <div className="grid md:grid-cols-2 gap-4">
