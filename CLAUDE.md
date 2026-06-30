@@ -1,10 +1,10 @@
 # personal-website — Brandon Henrickson portfolio
 
-Recruiter-facing single-page portfolio. React + Vite + Tailwind, deployed on Netlify.
+Recruiter-facing single-page portfolio. React + Vite + Tailwind, deployed on Vercel.
 
-- **Live:** https://www.greatbrandino.com (Netlify, auto-deploys from GitHub `main`)
+- **Live:** https://www.greatbrandino.com (Vercel, auto-deploys from GitHub `main`)
 - **Repo:** github.com/BrandonHenrickson/personal-website (private)
-- **Deploy:** `git push origin main` → Netlify builds (`npm run build`, publish dir `dist`) and ships in ~1–2 min. No manual upload.
+- **Deploy:** `git push origin main` → Vercel builds (`npm run build`, output dir `dist`) and ships in ~1–2 min. No manual upload. Domain DNS stays at Hostinger (apex ALIAS + www CNAME → Vercel). Was on Netlify until 2026-06-30 (free build credits ran out).
 
 > Maintenance: when you change routes, sections, the design system, the build, or deploy, update this file **and** the workspace-level `../CLAUDE.md`, and date-stamp the change.
 
@@ -14,7 +14,7 @@ Recruiter-facing single-page portfolio. React + Vite + Tailwind, deployed on Net
 - `npm run build` — production build to `dist/`
 - `npm run lint` — eslint (quiet)
 
-⚠️ **Build gotcha:** in some shells `npm run build` (script: `node tools/generate-llms.js || true && vite build`) reports success without actually running Vite. To get a real build + real error output, run **`npx vite build`** directly. Netlify's cloud build runs fine regardless.
+⚠️ **Build gotcha:** in some shells `npm run build` (script: `node tools/generate-llms.js || true && vite build`) reports success without actually running Vite. To get a real build + real error output, run **`npx vite build`** directly. Vercel's cloud build runs fine regardless.
 
 ## Stack
 - React 18 · Vite 4 · Tailwind 3 · Framer Motion
@@ -36,8 +36,8 @@ Recruiter-facing single-page portfolio. React + Vite + Tailwind, deployed on Net
 
 ## Notable pieces
 - `src/components/FootprintsBackground.jsx` — canvas: a top-down figure that wanders the hero band leaving fading footprints. `pointer-events-none`, honors `prefers-reduced-motion`. Mounted inside the hero's `relative overflow-hidden` emerald band; content sits at `z-10`.
-- **Contact form** → **Netlify Forms**: the React form POSTs to `/` with `form-name=contact` + a honeypot; `public/__forms.html` is the hidden static form Netlify detects at build. Submissions appear in Netlify → Forms; **email delivery requires a Form submission notification configured in the Netlify dashboard** (Project configuration → Notifications).
-- **SPA routing on Netlify:** `public/_redirects` (`/* /index.html 200`). The legacy `public/.htaccess` only applied to the old Apache host.
+- **Contact form** → **Web3Forms**: the React form POSTs JSON to `https://api.web3forms.com/submit` with the access key in `ContactSection.jsx` (`WEB3FORMS_ACCESS_KEY`) + a `botcheck` honeypot; Web3Forms emails submissions to b.henrickson17@gmail.com. (Replaced Netlify Forms during the Vercel migration.)
+- **SPA routing on Vercel:** `vercel.json` rewrites all paths → `/index.html`. The old `public/_redirects` (Netlify) and `public/.htaccess` (Apache) remain but are ignored on Vercel.
 - **Accessibility/perf:** `.skip-link` (in `Navigation`) + `<main id="main" tabIndex={-1}>` landmark on every page; global `:focus-visible` outline in `index.css`; below-the-fold media is `loading="lazy"`.
 
 ## Gotchas
