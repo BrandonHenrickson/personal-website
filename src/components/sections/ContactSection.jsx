@@ -32,10 +32,7 @@ const contactLines = [
   },
 ];
 
-const encode = (data) =>
-  Object.keys(data)
-    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&');
+const WEB3FORMS_ACCESS_KEY = 'b9840c50-b625-4376-b9af-3df16065aa79';
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -55,16 +52,35 @@ const ContactSection = () => {
       return;
     }
     try {
-      await fetch('/', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'contact', ...formData }),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: 'New message from greatbrandino.com',
+          from_name: 'greatbrandino.com contact form',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
       });
-      toast({
-        title: 'Message sent',
-        description: "Thanks for reaching out — I'll respond shortly.",
-      });
-      setFormData({ name: '', email: '', message: '' });
+      const data = await res.json();
+      if (data.success) {
+        toast({
+          title: 'Message sent',
+          description: "Thanks for reaching out — I'll respond shortly.",
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        toast({
+          variant: 'destructive',
+          title: 'Something went wrong',
+          description: 'Please email me directly at b.henrickson17@gmail.com.',
+        });
+      }
     } catch (err) {
       toast({
         variant: 'destructive',
@@ -155,21 +171,16 @@ const ContactSection = () => {
             Drop a quick message and I&apos;ll reply to the email you provide.
           </p>
 
-          <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            onSubmit={handleSubmit}
-            className="space-y-5"
-          >
-            <input type="hidden" name="form-name" value="contact" />
-            <p className="hidden">
-              <label>
-                Don’t fill this out if you’re human:{' '}
-                <input name="bot-field" onChange={handleChange} />
-              </label>
-            </p>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Web3Forms honeypot — bots fill this, humans don't see it */}
+            <input
+              type="checkbox"
+              name="botcheck"
+              className="hidden"
+              style={{ display: 'none' }}
+              tabIndex={-1}
+              autoComplete="off"
+            />
             <div className="grid sm:grid-cols-2 gap-5">
               <label className="block">
                 <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-inkMuted block mb-2">
