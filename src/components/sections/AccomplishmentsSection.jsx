@@ -14,13 +14,13 @@ const items = [
   {
     icon: Globe,
     eyebrow: 'Travel',
-    title: 'Twelve countries, one perspective',
+    title: 'Thirteen countries, one perspective',
     body:
       'Gained diverse cultural perspectives through extensive travel — adaptability that translates directly to working with international teams.',
     countries: [
       'Italy', 'San Marino', 'Vatican City', 'Switzerland',
       'Austria', 'Germany', 'Czechia', 'Slovakia',
-      'Poland', 'Netherlands', 'England', 'Canada',
+      'Poland', 'Netherlands', 'Portugal', 'England', 'Canada',
     ],
   },
   {
