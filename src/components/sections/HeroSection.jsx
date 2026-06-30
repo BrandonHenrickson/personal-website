@@ -116,7 +116,7 @@ const HeroSection = () => {
       </div>
 
       {/* Stats + quick-nav, overlapping the emerald band edge */}
-      <div className="max-w-4xl mx-auto px-6 w-full -mt-12 pb-16 md:pb-24">
+      <div className="relative z-10 max-w-4xl mx-auto px-6 w-full -mt-12 pb-16 md:pb-24">
         <motion.div
           variants={reveal}
           initial="hidden"
