@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Linkedin, Github, Mail, Phone, MapPin, ArrowUpRight, Send, FileText } from 'lucide-react';
+import { Linkedin, Github, Mail, ArrowUpRight, Send, FileText } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 
 const contactLines = [
@@ -9,12 +9,6 @@ const contactLines = [
     value: 'b.henrickson17@gmail.com',
     href: 'mailto:b.henrickson17@gmail.com',
     icon: Mail,
-  },
-  {
-    label: 'Phone',
-    value: '(218) 390-4619',
-    href: 'tel:+12183904619',
-    icon: Phone,
   },
   {
     label: 'LinkedIn',
@@ -239,9 +233,17 @@ const ContactSection = () => {
           <p className="font-mono text-xs tracking-[0.2em] uppercase text-inkMuted">
             © {new Date().getFullYear()} Brandon Henrickson · Duluth, MN
           </p>
-          <p className="font-mono text-xs tracking-[0.2em] uppercase text-emerald">
-            Set in Fraunces &amp; IBM Plex
-          </p>
+          <div className="flex items-center gap-4">
+            <a
+              href="/privacy"
+              className="font-mono text-xs tracking-[0.2em] uppercase text-inkMuted hover:text-emerald transition-colors"
+            >
+              Privacy
+            </a>
+            <p className="font-mono text-xs tracking-[0.2em] uppercase text-emerald">
+              Set in Fraunces &amp; IBM Plex
+            </p>
+          </div>
         </div>
       </div>
     </section>
