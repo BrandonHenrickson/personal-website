@@ -18,7 +18,7 @@ Recruiter-facing single-page portfolio. React + Vite + Tailwind, deployed on Ver
 
 ## Stack
 - React 18 · Vite 4 · Tailwind 3 · Framer Motion
-- React Router 7 — routes: `/` (HomePage), `/guides` (GuidesPage), `*` → `NotFoundPage` (custom 404)
+- React Router 7 — routes: `/` (HomePage), `/guides` (GuidesPage), `/privacy` (PrivacyPage), `*` → `NotFoundPage` (custom 404)
 - Radix UI / shadcn-style primitives in `src/components/ui/`
 - react-helmet for per-page title/meta; lucide-react for icons
 - Supabase JS installed but unused; ThemeContext exists but is inert (no light/dark toggle)
