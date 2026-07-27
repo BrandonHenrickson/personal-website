@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Film, MapPin, AlertCircle } from 'lucide-react';
+import { Film, MapPin } from 'lucide-react';
+
+const videos = [
+  { id: '1pA4lVgWD1s', place: 'Malta' },
+  { id: 'PECGtGSLD0c', place: 'Sicily' },
+  { id: 'S3x3krRHfM4', place: 'Taormina' },
+  { id: '9t4dEKpymbo', place: 'Lisbon' },
+  { id: '8VIGCWMtpWM', place: 'Tower of Belém' },
+  { id: 'JFi3HXTJgOw', place: 'Poland' },
+  { id: '3E2oGiYgYyg', place: 'Czechia' },
+  { id: 'ikbYz6LjfME', place: 'Duluth' },
+];
 
 const DroneVideographySection = () => {
-  const [imageErrors, setImageErrors] = useState({});
-  const onImgError = (id) => setImageErrors((prev) => ({ ...prev, [id]: true }));
-
   return (
     <section id="drone" className="bg-canvas">
       {/* Banner */}
@@ -21,12 +29,12 @@ const DroneVideographySection = () => {
       {/* Content */}
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
         <p className="text-inkSoft text-base md:text-lg leading-[1.75] text-pretty mb-10 max-w-2xl">
-          Aerial cinematography across Minnesota landscapes and events —
-          shot on DJI Air 2S, DJI Air 3, and DJI Mini 3 Pro. A short demo
-          reel and selected frames below.
+          Aerial cinematography from travels across Europe and back home in
+          Minnesota — shot on DJI Air 2S, DJI Air 3, and DJI Mini 3 Pro. A demo
+          reel up top, plus clips from each place below.
         </p>
 
-        {/* Featured video */}
+        {/* Featured reel */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,62 +62,37 @@ const DroneVideographySection = () => {
           </div>
         </motion.div>
 
-        {/* Frame grid */}
+        {/* Per-location clips */}
         <div className="grid md:grid-cols-2 gap-4 mt-8">
-          {[
-            {
-              id: 'urban',
-              src: 'https://images.unsplash.com/photo-1673862968164-d8842a59bd2d?auto=format&fit=crop&w=1200&q=70',
-              title: 'Urban Dusk',
-              place: 'Minnesota Skyline',
-            },
-            {
-              id: 'harbor',
-              src: 'https://horizons-cdn.hostinger.com/0d63ad3f-8456-4ea9-bf68-6ad4e4438075/259ac8bf8a85221d7cbf298f8bed170c.png',
-              title: "Grandma's Marathon",
-              place: 'Duluth Waterfront, 2025',
-            },
-          ].map((frame, i) => (
+          {videos.map((v, i) => (
             <motion.figure
-              key={frame.id}
+              key={v.id}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              transition={{ duration: 0.6, delay: (i % 2) * 0.1 }}
               className="group bg-surface border border-border rounded-lg overflow-hidden transition-colors duration-300 hover:border-emerald"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-canvasAlt">
-                {imageErrors[frame.id] ? (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-inkMuted">
-                    <AlertCircle size={26} strokeWidth={1.25} />
-                    <p className="font-mono text-xs tracking-wider mt-2">Image unavailable</p>
-                  </div>
-                ) : (
-                  <img
-                    src={frame.src}
-                    alt={frame.title}
-                    loading="lazy"
-                    decoding="async"
-                    onError={() => onImgError(frame.id)}
-                    className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-[1.04]"
-                  />
-                )}
+              <div className="relative aspect-video w-full bg-codeBlock">
+                <iframe
+                  src={`https://www.youtube.com/embed/${v.id}`}
+                  title={`${v.place} — Drone footage`}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
-              <figcaption className="flex items-baseline justify-between gap-4 px-5 py-4">
-                <div>
-                  <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-emerald mb-1">
-                    Frame 0{i + 2}
-                  </p>
-                  <h3 className="font-display font-bold text-lg text-ink leading-tight">
-                    {frame.title}
-                  </h3>
-                </div>
-                <div className="flex items-center gap-1.5 text-inkMuted shrink-0">
+              <figcaption className="flex items-center justify-between gap-3 px-5 py-4">
+                <h3 className="font-display font-bold text-lg text-ink leading-tight">
+                  {v.place}
+                </h3>
+                <span className="flex items-center gap-1.5 text-inkMuted shrink-0">
                   <MapPin size={12} />
                   <span className="font-mono text-[10px] tracking-[0.2em] uppercase">
-                    {frame.place}
+                    Drone
                   </span>
-                </div>
+                </span>
               </figcaption>
             </motion.figure>
           ))}
