@@ -109,6 +109,7 @@ const Navigation = () => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
+                  aria-current={active ? 'page' : undefined}
                   className="group relative"
                 >
                   <span

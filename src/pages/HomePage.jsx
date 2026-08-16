@@ -10,6 +10,7 @@ import DroneVideographySection from '@/components/sections/DroneVideographySecti
 import BlogSection from '@/components/sections/BlogSection';
 import AccomplishmentsSection from '@/components/sections/AccomplishmentsSection';
 import SkillsSection from '@/components/sections/SkillsSection';
+import EngineeringSection from '@/components/sections/EngineeringSection';
 import ContactSection from '@/components/sections/ContactSection';
 
 const HomePage = () => {
@@ -30,10 +31,10 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Brandon - Software Developer & Project Manager</title>
-        <meta 
-          name="description" 
-          content="Brandon's portfolio showcasing expertise in software development, project management, and technical analysis. Explore projects built with React, Node.js, and modern web technologies." 
+        <title>Brandon Henrickson — Software Developer & Project Manager</title>
+        <meta
+          name="description"
+          content="Portfolio of Brandon Henrickson — software developer & project manager in Duluth, MN. Accessible, fast, secure React site featuring automation work, data analysis, and a live D3.js troubleshooting app."
         />
       </Helmet>
       
@@ -47,6 +48,7 @@ const HomePage = () => {
           <BlogSection />
           <DroneVideographySection />
           <SkillsSection />
+          <EngineeringSection />
           <AccomplishmentsSection />
           <ContactSection />
         </main>

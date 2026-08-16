@@ -1,0 +1,18 @@
+{
+  "name": "Brandon Henrickson — Portfolio",
+  "short_name": "Brandino",
+  "description": "Portfolio of Brandon Henrickson — software developer & project manager.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#065F46",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

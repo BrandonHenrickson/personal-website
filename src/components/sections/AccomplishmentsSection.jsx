@@ -35,7 +35,7 @@ const items = [
 
 const AccomplishmentsSection = () => {
   return (
-    <section id="accomplishments" className="bg-canvas">
+    <section id="accomplishments" className="bg-canvasAlt">
       {/* Banner */}
       <div className="w-full bg-emerald">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-3">

@@ -6,6 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="theme-color" content="#065F46" />
 		<link rel="canonical" href="https://www.greatbrandino.com/" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<meta
 			name="description"
 			content="Portfolio of Brandon Henrickson — Computer Science graduate, Certified Apple Technician, and software developer specializing in automation, data analysis, and project management."
@@ -32,9 +35,57 @@
 			content="https://horizons-cdn.hostinger.com/0d63ad3f-8456-4ea9-bf68-6ad4e4438075/51ed36a95009e805b0797b013602d1bd.jpg"
 		/>
 		<title>Brandon Henrickson — Software Developer & Project Manager</title>
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@graph": [
+					{
+						"@type": "Person",
+						"name": "Brandon Henrickson",
+						"url": "https://www.greatbrandino.com/",
+						"image": "https://horizons-cdn.hostinger.com/0d63ad3f-8456-4ea9-bf68-6ad4e4438075/51ed36a95009e805b0797b013602d1bd.jpg",
+						"jobTitle": "Software Developer & Project Manager",
+						"email": "mailto:b.henrickson17@gmail.com",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Duluth",
+							"addressRegion": "MN",
+							"addressCountry": "US"
+						},
+						"alumniOf": {
+							"@type": "CollegeOrUniversity",
+							"name": "University of St. Thomas"
+						},
+						"knowsAbout": ["Web Development", "React", "Accessibility", "Data Analysis", "Project Management", "Apple Hardware Repair"],
+						"sameAs": [
+							"https://github.com/BrandonHenrickson",
+							"https://www.linkedin.com/in/brandon-henrickson-470052167/"
+						]
+					},
+					{
+						"@type": "WebSite",
+						"name": "Brandon Henrickson — Portfolio",
+						"url": "https://www.greatbrandino.com/"
+					}
+				]
+			}
+		</script>
 	</head>
 	<body>
 		<div id="root"></div>
+		<noscript>
+			<div style="max-width: 640px; margin: 4rem auto; padding: 0 1.5rem; font-family: system-ui, -apple-system, sans-serif; color: #111827; line-height: 1.6; text-align: center;">
+				<h1 style="font-family: Georgia, serif;">Brandon Henrickson</h1>
+				<p>Software Developer &amp; Project Manager · Duluth, MN</p>
+				<p>
+					This portfolio needs JavaScript to load its interactive content. You can
+					still reach me at
+					<a href="mailto:b.henrickson17@gmail.com" style="color: #065F46;">b.henrickson17@gmail.com</a>,
+					on <a href="https://github.com/BrandonHenrickson" style="color: #065F46;">GitHub</a>, or
+					<a href="https://www.linkedin.com/in/brandon-henrickson-470052167/" style="color: #065F46;">LinkedIn</a>.
+				</p>
+			</div>
+		</noscript>
 		<script type="module" src="/src/main.jsx"></script>
 		<!-- Cloudflare Web Analytics -->
 		<script

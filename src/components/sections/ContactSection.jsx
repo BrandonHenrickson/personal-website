@@ -88,7 +88,7 @@ const ContactSection = () => {
     'w-full bg-canvas border border-border rounded px-3 py-2.5 text-ink placeholder:text-inkMuted/60 outline-none transition-colors focus:border-emerald focus:ring-1 focus:ring-emerald font-sans';
 
   return (
-    <section id="contact" className="bg-canvasAlt">
+    <section id="contact" className="bg-canvas">
       {/* Banner */}
       <div className="w-full bg-emerald">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-3">
