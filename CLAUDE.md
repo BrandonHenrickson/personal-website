@@ -18,7 +18,7 @@ Recruiter-facing single-page portfolio. React + Vite + Tailwind, deployed on Ver
 
 ## Stack
 - React 18 · Vite 4 · Tailwind 3 · Framer Motion
-- React Router 7 — routes: `/` (HomePage), `/guides` (GuidesPage), `/privacy` (PrivacyPage), `/troubleshooter` (TroubleshooterPage), `*` → `NotFoundPage` (custom 404)
+- React Router 7 — routes: `/` (HomePage), `/guides` (GuidesPage), `/privacy` (PrivacyPage), `/troubleshooter` (TroubleshooterPage), `*` → `NotFoundPage` (custom 404). Every route except `/` is lazy-loaded (`React.lazy`/`Suspense` in `App.jsx` = code splitting)
 - Radix UI / shadcn-style primitives in `src/components/ui/`
 - react-helmet for per-page title/meta; lucide-react for icons
 - Supabase JS installed but unused; ThemeContext exists but is inert (no light/dark toggle)
@@ -37,8 +37,10 @@ Recruiter-facing single-page portfolio. React + Vite + Tailwind, deployed on Ver
 ## Notable pieces
 - `src/components/FootprintsBackground.jsx` — canvas: a top-down figure that wanders the hero band leaving fading footprints. `pointer-events-none`, honors `prefers-reduced-motion`. Mounted inside the hero's `relative overflow-hidden` emerald band; content sits at `z-10`.
 - **Contact form** → **Web3Forms**: the React form POSTs JSON to `https://api.web3forms.com/submit` with the access key in `ContactSection.jsx` (`WEB3FORMS_ACCESS_KEY`) + a `botcheck` honeypot; Web3Forms emails submissions to b.henrickson17@gmail.com. (Replaced Netlify Forms during the Vercel migration.)
-- **SPA routing on Vercel:** `vercel.json` rewrites all paths → `/index.html`. The old `public/_redirects` (Netlify) and `public/.htaccess` (Apache) remain but are ignored on Vercel.
-- **Accessibility/perf:** `.skip-link` (in `Navigation`) + `<main id="main" tabIndex={-1}>` landmark on every page; global `:focus-visible` outline in `index.css`; below-the-fold media is `loading="lazy"`.
+- **SPA routing + security headers on Vercel:** `vercel.json` `rewrites` all paths → `/index.html`, and its `headers` set the CSP, HSTS, `X-Content-Type-Options`, `X-Frame-Options: SAMEORIGIN`, Referrer/Permissions-Policy. The CSP allowlists Cloudflare, jsdelivr (D3), Google Fonts, Unsplash/Hostinger images, YouTube frames, and Web3Forms — **add any new external origin there or it gets blocked**; `frame-ancestors 'self'` is what lets `/troubleshooter` embed `/tsf`. (Old `public/_redirects`/`.htaccess` remain, ignored.)
+- **Engineering baseline (all live-verified):** a11y — `.skip-link` + `<main id="main">` landmarks, `:focus-visible`, `aria-current` active nav (Lighthouse A11y 100); perf — route code-splitting + `loading="lazy"` media + `preconnect`; SEO — JSON-LD (`Person`+`WebSite`) in `index.html`, `public/sitemap.xml` + `public/robots.txt`, and **per-route self-canonicals set via react-helmet on each page** (NOT a static one in `index.html` — that would wrongly canonicalize every route to `/`); PWA — `public/manifest.webmanifest`; resilience — `<noscript>` in `index.html`. Live Lighthouse (mobile) = A11y / Best-Practices / SEO / Agentic-Browsing all 100.
+- **`tools/generate-llms.js`** emits a spec-compliant `/llms.txt` (H1 + `>` summary + page list) during `npm run build`. ⚠️ Its `isMainModule` guard only fires on POSIX (Vercel); run directly on Windows it no-ops.
+- **`vite.config.js` is intentionally minimal** — the Hostinger Horizons editor plugins + inline error-reporting scripts were removed (they injected 5 inline `<script>`s and monkey-patched `console`/`fetch`, which blocked the CSP).
 
 ## Tech Troubleshooter embed
 - `/troubleshooter` embeds the D3 app **same-origin** from `public/tsf/` (index.html, style.css, main.js, arf.json). GitHub Pages sends headers that block cross-origin framing (`ERR_BLOCKED_BY_RESPONSE`), so the app is mirrored in rather than iframed from github.io. `public/tsf/index.html` is `noindex`.
