@@ -183,6 +183,7 @@ const ContactSection = () => {
                 <input
                   type="text"
                   name="name"
+                  autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
                   className={inputClass}
@@ -196,6 +197,7 @@ const ContactSection = () => {
                 <input
                   type="email"
                   name="email"
+                  autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
                   className={inputClass}

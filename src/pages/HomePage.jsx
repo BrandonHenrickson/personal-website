@@ -32,6 +32,7 @@ const HomePage = () => {
     <>
       <Helmet>
         <title>Brandon Henrickson — Software Developer & Project Manager</title>
+        <link rel="canonical" href="https://www.greatbrandino.com/" />
         <meta
           name="description"
           content="Portfolio of Brandon Henrickson — software developer & project manager in Duluth, MN. Accessible, fast, secure React site featuring automation work, data analysis, and a live D3.js troubleshooting app."

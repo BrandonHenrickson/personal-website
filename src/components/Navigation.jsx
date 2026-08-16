@@ -103,7 +103,9 @@ const Navigation = () => {
           {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => {
-              const active = activeSection === link.href.substring(1);
+              const active = link.href.startsWith('#')
+                ? location.pathname === '/' && activeSection === link.href.substring(1)
+                : location.pathname === link.href;
               return (
                 <a
                   key={link.name}

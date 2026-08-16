@@ -247,6 +247,7 @@ const GuidesPage = () => {
             ? `${active.title} — Brandon Henrickson`
             : 'Guides — Brandon Henrickson'}
         </title>
+        <link rel="canonical" href="https://www.greatbrandino.com/guides" />
         <meta
           name="description"
           content="Technical write-ups by Brandon Henrickson on automation, data visualization, and computer diagnostics."

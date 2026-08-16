@@ -25,6 +25,7 @@ const quickNav = [
   { label: 'Education', target: '#education' },
   { label: 'Projects', target: '#blog' },
   { label: 'Skills', target: '#skills' },
+  { label: 'Engineering', target: '#engineering' },
   { label: 'Drone', target: '#drone' },
   { label: 'Contact', target: '#contact' },
 ];

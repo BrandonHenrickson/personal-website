@@ -22,6 +22,7 @@ const TroubleshooterPage = () => (
   <>
     <Helmet>
       <title>Tech Troubleshooter Framework — Brandon Henrickson</title>
+      <link rel="canonical" href="https://www.greatbrandino.com/troubleshooter" />
       <meta
         name="description"
         content="An interactive D3.js decision tree of 295 Windows, macOS, browser, Office, and email fixes — built by Brandon Henrickson."

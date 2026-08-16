@@ -121,11 +121,19 @@ function generateFallbackUrl(fileName) {
 
 function generateLlmsTxt(pages) {
   const sortedPages = pages.sort((a, b) => a.title.localeCompare(b.title));
-  const pageEntries = sortedPages.map(page => 
+  const pageEntries = sortedPages.map(page =>
     `- [${page.title}](${page.url}): ${page.description}`
   ).join('\n');
-  
-  return `## Pages\n${pageEntries}`;
+
+  // llms.txt spec (llmstxt.org): H1 title, then a blockquote summary, then sections.
+  const header = [
+    '# Brandon Henrickson — Portfolio',
+    '',
+    '> Portfolio of Brandon Henrickson, a software developer and project manager in Duluth, MN. A React site featuring automation work, data analysis, drone videography, and a live D3.js troubleshooting app.',
+    '',
+  ].join('\n');
+
+  return `${header}## Pages\n${pageEntries}\n`;
 }
 
 function ensureDirectoryExists(dirPath) {
