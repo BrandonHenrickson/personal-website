@@ -18,7 +18,7 @@ Recruiter-facing single-page portfolio. React + Vite + Tailwind, deployed on Ver
 
 ## Stack
 - React 18 · Vite 4 · Tailwind 3 · Framer Motion
-- React Router 7 — routes: `/` (HomePage), `/guides` (GuidesPage), `/privacy` (PrivacyPage), `*` → `NotFoundPage` (custom 404)
+- React Router 7 — routes: `/` (HomePage), `/guides` (GuidesPage), `/privacy` (PrivacyPage), `/troubleshooter` (TroubleshooterPage), `*` → `NotFoundPage` (custom 404)
 - Radix UI / shadcn-style primitives in `src/components/ui/`
 - react-helmet for per-page title/meta; lucide-react for icons
 - Supabase JS installed but unused; ThemeContext exists but is inert (no light/dark toggle)
@@ -39,6 +39,10 @@ Recruiter-facing single-page portfolio. React + Vite + Tailwind, deployed on Ver
 - **Contact form** → **Web3Forms**: the React form POSTs JSON to `https://api.web3forms.com/submit` with the access key in `ContactSection.jsx` (`WEB3FORMS_ACCESS_KEY`) + a `botcheck` honeypot; Web3Forms emails submissions to b.henrickson17@gmail.com. (Replaced Netlify Forms during the Vercel migration.)
 - **SPA routing on Vercel:** `vercel.json` rewrites all paths → `/index.html`. The old `public/_redirects` (Netlify) and `public/.htaccess` (Apache) remain but are ignored on Vercel.
 - **Accessibility/perf:** `.skip-link` (in `Navigation`) + `<main id="main" tabIndex={-1}>` landmark on every page; global `:focus-visible` outline in `index.css`; below-the-fold media is `loading="lazy"`.
+
+## Tech Troubleshooter embed
+- `/troubleshooter` embeds the D3 app **same-origin** from `public/tsf/` (index.html, style.css, main.js, arf.json). GitHub Pages sends headers that block cross-origin framing (`ERR_BLOCKED_BY_RESPONSE`), so the app is mirrored in rather than iframed from github.io. `public/tsf/index.html` is `noindex`.
+- It's a **snapshot** — when the `tech-troubleshooter-framework` repo changes, re-copy those 4 files into `public/tsf/`. The "Open the full app" button still points at the canonical github.io URL.
 
 ## Gotchas
 - `dist/ruvector.db` is a stray local artifact (not produced by the build, not in git, not deployed) — ignore/delete locally.

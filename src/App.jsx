@@ -4,6 +4,7 @@ import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
 import GuidesPage from './pages/GuidesPage';
 import PrivacyPage from './pages/PrivacyPage';
+import TroubleshooterPage from './pages/TroubleshooterPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/contexts/ThemeContext';
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/guides" element={<GuidesPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/troubleshooter" element={<TroubleshooterPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Toaster />

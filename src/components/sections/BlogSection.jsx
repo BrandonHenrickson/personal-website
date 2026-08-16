@@ -20,10 +20,10 @@ const projects = [
     tag: 'D3.js · Data Viz · GitHub Pages',
     year: '2026',
     body:
-      'Designed and deployed an interactive D3.js troubleshooting tree — a searchable, 295-node map of Windows and Mac fixes, commands, and step-by-step solutions with zoom/pan and a live detail panel. Built in vanilla JavaScript with no framework and served on GitHub Pages.',
+      'Designed and deployed an interactive D3.js troubleshooting tree — a searchable, 295-node map of Windows, macOS, browser, Office, and email fixes, commands, and step-by-step solutions with zoom/pan and a live detail panel. Built in vanilla JavaScript with no framework and served on GitHub Pages.',
     stack: ['D3.js', 'JavaScript', 'Data Visualization', 'GitHub Pages'],
-    href: 'https://brandonhenrickson.github.io/tech-troubleshooter-framework/',
-    external: true,
+    href: '/troubleshooter',
+    external: false,
   },
   {
     n: '03',

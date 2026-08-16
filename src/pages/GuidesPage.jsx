@@ -84,7 +84,7 @@ def receipt_to_ledger(pdf_path, workbook_path):
     readTime: '7 min read',
     tags: ['D3.js', 'JavaScript', 'Data Viz'],
     excerpt:
-      'I had years of scattered fixes in my head. So I turned them into a searchable, 295-node visual map of how to repair Windows and Mac.',
+      'I had years of scattered fixes in my head. So I turned them into a searchable, 295-node visual map spanning Windows, macOS, browsers, Office, and email.',
     content: [
       {
         type: 'p',
