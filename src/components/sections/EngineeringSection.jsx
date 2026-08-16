@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Check } from 'lucide-react';
 
-// Every chip below is verifiable on this very site — no unbacked claims.
 const evidence = [
   'Lighthouse A11y 100',
   'Hardened HTTP headers',
@@ -52,7 +51,7 @@ const EngineeringSection = () => (
         uses — accessible, fast, secure, and shipped on a modern toolchain.
       </p>
 
-      {/* Evidence chips — the proof is the site itself */}
+      {/* Evidence chips */}
       <ul className="flex flex-wrap gap-2 mb-12">
         {evidence.map((e) => (
           <li

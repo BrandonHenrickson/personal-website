@@ -5,8 +5,7 @@ import HomePage from './pages/HomePage';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 
-// Route-level code splitting: the homepage ships in the initial bundle;
-// everything else loads on demand so first paint carries less JS.
+// Lazy-load everything but the homepage.
 const GuidesPage = lazy(() => import('./pages/GuidesPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const TroubleshooterPage = lazy(() => import('./pages/TroubleshooterPage'));

@@ -1,13 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 
 /*
- * A subtle, top-down figure that wanders around the hero band and leaves a
- * trail of fading footprints. Drawn on a canvas behind the hero content in
- * faint white so it reads as background texture, not foreground noise.
- *
- * - Sizes itself to its parent (which must be position:relative).
- * - pointer-events-none so it never intercepts clicks.
- * - Honors prefers-reduced-motion: draws a single static trail and stops.
+ * Top-down figure that wanders the hero band leaving fading footprints.
+ * Canvas behind the content; pointer-events-none; sizes to its parent;
+ * honors prefers-reduced-motion (draws one static trail and stops).
  */
 const FOOT_LIFE = 9000; // ms a footprint stays before fully fading
 const STRIDE = 26; // px of travel between footprints
