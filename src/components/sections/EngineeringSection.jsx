@@ -1,13 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Check } from 'lucide-react';
+import { Code2, Check, ArrowUpRight } from 'lucide-react';
 
+const REPO_URL = 'https://github.com/BrandonHenrickson/personal-website';
+
+// Each chip links to live, third-party proof of the claim.
 const evidence = [
-  'Lighthouse A11y 100',
-  'Hardened HTTP headers',
-  'Structured data',
-  'Code-split bundle',
-  'CI/CD auto-deploy',
+  {
+    label: 'Lighthouse A11y 100',
+    href: 'https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fwww.greatbrandino.com',
+  },
+  {
+    label: 'HTTP security headers',
+    href: 'https://securityheaders.com/?q=https%3A%2F%2Fwww.greatbrandino.com&followRedirects=on',
+  },
+  {
+    label: 'Structured data',
+    href: 'https://search.google.com/test/rich-results?url=https%3A%2F%2Fwww.greatbrandino.com',
+  },
+  { label: 'Open source', href: REPO_URL },
 ];
 
 const groups = [
@@ -46,20 +57,36 @@ const EngineeringSection = () => (
 
     {/* Content */}
     <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
-      <p className="text-inkSoft text-base md:text-lg leading-[1.75] text-pretty mb-6 max-w-2xl">
-        This site is its own résumé. Every practice below is one it actually
-        uses — accessible, fast, secure, and shipped on a modern toolchain.
+      <p className="text-inkSoft text-base md:text-lg leading-[1.75] text-pretty mb-4 max-w-2xl">
+        This site is its own résumé — and it&apos;s open source. Every practice
+        below is one it actually uses; the chips below link to live proof, and
+        the whole thing is yours to read.
       </p>
 
-      {/* Evidence chips */}
+      <a
+        href={REPO_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 font-mono text-sm text-emerald hover:text-emeraldHover underline underline-offset-4 mb-8"
+      >
+        Read the source on GitHub
+        <ArrowUpRight size={15} />
+      </a>
+
+      {/* Evidence chips — each links to independent verification */}
       <ul className="flex flex-wrap gap-2 mb-12">
         {evidence.map((e) => (
-          <li
-            key={e}
-            className="inline-flex items-center gap-1.5 font-mono text-xs bg-emeraldLight text-emeraldText px-3 py-1.5 rounded-full"
-          >
-            <Check size={12} strokeWidth={3} aria-hidden="true" />
-            {e}
+          <li key={e.label}>
+            <a
+              href={e.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-mono text-xs bg-emeraldLight text-emeraldText px-3 py-1.5 rounded-full transition-colors hover:bg-emerald hover:text-white"
+            >
+              <Check size={12} strokeWidth={3} aria-hidden="true" />
+              {e.label}
+              <ArrowUpRight size={12} aria-hidden="true" />
+            </a>
           </li>
         ))}
       </ul>
