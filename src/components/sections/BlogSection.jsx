@@ -33,7 +33,7 @@ const projects = [
     body:
       'Designed and shipped a custom Python/VBScript tool for a local business that parses PDF receipts and populates Excel ledgers via API/COM automation. Eliminated manual data entry, increased financial-reporting accuracy, and slotted into the client\'s existing workflow.',
     stack: ['Python', 'VBScript', 'Excel COM', 'PDF parsing'],
-    href: '#contact',
+    href: '/case-studies#receipt-automation',
     external: false,
   },
   {
@@ -44,7 +44,7 @@ const projects = [
     body:
       'At Turnberry/Orbia, designed Power BI dashboards that surfaced vulnerability metrics across 10 key systems and instituted weekly vulnerability-management meetings with 20+ stakeholders. Chaired reporting to senior leadership.',
     stack: ['Power BI', 'Cybersecurity', 'Reporting', 'Leadership'],
-    href: '#work',
+    href: '/case-studies#cybersecurity-program',
     external: false,
   },
   {

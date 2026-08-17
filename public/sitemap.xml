@@ -5,6 +5,10 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://www.greatbrandino.com/case-studies</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.greatbrandino.com/troubleshooter</loc>
     <priority>0.8</priority>
   </url>

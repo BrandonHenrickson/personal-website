@@ -9,6 +9,7 @@ import { ThemeProvider } from '@/contexts/ThemeContext';
 const GuidesPage = lazy(() => import('./pages/GuidesPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const TroubleshooterPage = lazy(() => import('./pages/TroubleshooterPage'));
+const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/guides" element={<GuidesPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/troubleshooter" element={<TroubleshooterPage />} />
+            <Route path="/case-studies" element={<CaseStudiesPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
